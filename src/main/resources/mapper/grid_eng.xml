@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kmj.dao.IF_Grid_Dao_eng">
+	
+	<insert id="save" parameterType="com.kmj.vo.Grid_Vo_eng">
+		insert into grid_eng values (#{name}, #{purpose}, #{radio}, #{country}, sysdate, #{city}, grid_seq.nextval)
+	</insert>
+	
+	<select id="search" parameterType="com.kmj.vo.Grid_Vo_eng" resultType="com.kmj.vo.Grid_Vo_eng">
+		select t.* from (select sub.*, rownum as rnum from (select * from grid_eng where 1=1
+		<if test="name != null and name !=''"> and name=#{name} </if>
+		<if test="radio != null and radio !=''"> and radio=#{radio} </if>
+		<if test="purpose != null and purpose !=''"> and purpose=#{purpose} </if>
+		<if test="country != null and country !=''"> and country=#{country} </if>
+		<if test="city != null and city !=''"> and city=#{city} </if> order by no DESC) sub) t 
+		where rnum between #{startNo} and #{endNo} 		
+	</select>
+	
+	
+	
+	<select id="search_all" resultType="com.kmj.vo.Grid_Vo_eng">
+		select * from grid_eng order by indate DESC
+	</select>
+
+	
+	
+	<delete id="del" parameterType="String">
+		delete from grid_eng where name=#{name}
+	</delete>
+	<update id="mod" parameterType="com.kmj.vo.Grid_Vo_eng">
+		update grid_eng set purpose=#{purpose}, radio=#{radio}, country=#{country} where name=#{name}
+	</update>
+	<select id="mod_table" parameterType="String" resultType="com.kmj.vo.Grid_Vo_eng">
+		select * from grid_eng where name=#{name}
+	</select>
+	<select id="selectCnt" resultType="int" parameterType="com.kmj.vo.Grid_Vo_eng">
+		select count(*) from grid_eng where 1=1 <if test="name != null and name !=''"> and name=#{name} </if>
+		<if test="radio != null and radio !=''"> and radio=#{radio} </if>
+		<if test="purpose != null and purpose !=''"> and purpose=#{purpose} </if>
+		<if test="country != null and country !=''"> and country=#{country} </if>
+		<if test="city != null and city !=''"> and city=#{city} </if>
+	</select>
+</mapper>

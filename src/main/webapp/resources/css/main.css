@@ -1,0 +1,79 @@
+@charset "UTF-8";
+<style>
+	body {
+		width: 1024px;
+		text-align: center;
+	}
+	.main {
+		width: 800px;
+		height: 500px;
+		border: 1px solid black;		
+	}
+	.top {
+		display: flex;
+	
+	}
+	.top-right {
+		display: flex;
+		margin-left: auto;
+		margin-right: 40px;
+		margin-top: 10px;
+	
+	}
+	.top-boxes {
+		margin: 20px;
+		
+	}
+	.sub1 {
+		display: flex;
+		
+	}
+	.boxes {
+		margin: 20px;
+		width: 150px;
+		height: 40px;
+	}
+	.sub2 {
+		
+		display: flex;
+		border-bottom: 1px solid black;
+	}
+	.crud {
+		margin: 10px;
+		float: right;
+	}
+	
+	.check {
+		border: 1px solid black;
+		padding: 14px;		
+		margin-left: 10px;
+		margin-right: 10px;
+		margin-top: 50px;
+		height: 230px;
+		
+		/*overflow: auto;
+		height: 200px;
+		width: 780px;
+		overflow-x: hidden;*/	스크롤
+	}
+	
+	input[type=button],[type=submit] {
+		border-radius: 10px;
+	}
+	#Div {
+		background-color: white;
+	}
+	#Div3 {
+		background-color: white;
+	}
+	#board {
+		text-align: center;
+	
+	}
+	#board_eng {
+		text-align: center;
+	
+	}
+
+
+</style>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kmj.dao.IF_Country_Dao">
+	
+	<select id="country" resultType="com.kmj.vo.Country_Vo">
+		select country from grid_country group by country
+	</select>
+	<select id="city_search_vo" resultType="com.kmj.vo.Country_Vo">
+		select city from grid_country group by city order by city asc
+	</select>
+	<select id="city" parameterType="String" resultType="com.kmj.vo.Country_Vo">
+		select city from grid_country where country=#{country} order by city asc
+	</select>
+</mapper>
